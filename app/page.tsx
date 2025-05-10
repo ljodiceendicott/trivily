@@ -1,74 +1,96 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Page() {
+  const historicalEvents = [
+    {
+        year: 1969,
+        title: "Apollo 11 Moon Landing",
+        description: "NASA's Apollo 11 mission successfully landed humans on the Moon for the first time, with Neil Armstrong and Buzz Aldrin becoming the first people to walk on the lunar surface."
+    },
+    {
+        year: 1989,
+        title: "Fall of the Berlin Wall",
+        description: "The Berlin Wall, which had divided East and West Berlin since 1961, was opened, leading to German reunification and symbolizing the end of the Cold War in Europe."
+    },
+    {
+        year: 1776,
+        title: "American Declaration of Independence",
+        description: "The Continental Congress adopted the Declaration of Independence, announcing the American colonies' separation from Great Britain and establishing the United States of America."
+    },
+    {
+        year: 1945,
+        title: "End of World War II",
+        description: "World War II concluded with the unconditional surrender of Nazi Germany in May and Imperial Japan in September after atomic bombs were dropped on Hiroshima and Nagasaki."
+    },
+    {
+        year: 2001,
+        title: "September 11 Attacks",
+        description: "Terrorist attacks by al-Qaeda using hijacked commercial airplanes struck the World Trade Center in New York and the Pentagon, killing nearly 3,000 people and leading to the War on Terror."
+    }
+];
+
+
+  const [order, setOrder] = useState<number[]>([]);
+  const [pressed, setPressed] = useState<boolean[]>(Array(5).fill(false));
+  const [numpressed, setnumpressed] = useState<number>(0);
+
+  const handleButtonClick = (num: number) => {
+    if (!pressed[num - 1]) {
+      setOrder((prevOrder) => [...prevOrder, num]);
+      setPressed((prevPressed) => {
+        const newPressed = [...prevPressed];
+        newPressed[num - 1] = true;
+        return newPressed;
+      });
+    }
+    setnumpressed(numpressed + 1);  
+  };
+
+  const handleSubmit = () => {
+    console.log("Submitted order:", order);
+  };
+
+  const handleClear = () => {
+    setOrder([]);
+    setPressed(Array(5).fill(false));
+    setnumpressed(0);
+  };
+
   return (
-    <div className="flex h-screen bg-black">
-      <div className="w-screen h-screen flex flex-col justify-center items-center">
-        <svg
-          width="283"
-          height="64"
-          viewBox="0 0 283 64"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-36 h-36"
-          aria-label="Vercel logo"
-        >
-          <path
-            d="M141.04 16c-11.04 0-19 7.2-19 18s8.96 18 20 18c6.67 0 12.55-2.64 16.19-7.09l-7.65-4.42c-2.02 2.21-5.09 3.5-8.54 3.5-4.79 0-8.86-2.5-10.37-6.5h28.02c.22-1.12.35-2.28.35-3.5 0-10.79-7.96-17.99-19-17.99zm-9.46 14.5c1.25-3.99 4.67-6.5 9.45-6.5 4.79 0 8.21 2.51 9.45 6.5h-18.9zM248.72 16c-11.04 0-19 7.2-19 18s8.96 18 20 18c6.67 0 12.55-2.64 16.19-7.09l-7.65-4.42c-2.02 2.21-5.09 3.5-8.54 3.5-4.79 0-8.86-2.5-10.37-6.5h28.02c.22-1.12.35-2.28.35-3.5 0-10.79-7.96-17.99-19-17.99zm-9.45 14.5c1.25-3.99 4.67-6.5 9.45-6.5 4.79 0 8.21 2.51 9.45 6.5h-18.9zM200.24 34c0 6 3.92 10 10 10 4.12 0 7.21-1.87 8.8-4.92l7.68 4.43c-3.18 5.3-9.14 8.49-16.48 8.49-11.05 0-19-7.2-19-18s7.96-18 19-18c7.34 0 13.29 3.19 16.48 8.49l-7.68 4.43c-1.59-3.05-4.68-4.92-8.8-4.92-6.07 0-10 4-10 10zm82.48-29v46h-9V5h9zM36.95 0L73.9 64H0L36.95 0zm92.38 5l-27.71 48L73.91 5H84.3l17.32 30 17.32-30h10.39zm58.91 12v9.69c-1-.29-2.06-.49-3.2-.49-5.81 0-10 4-10 10V51h-9V17h9v9.2c0-5.08 5.91-9.2 13.2-9.2z"
-            fill="white"
-          />
-        </svg>
-        <div className="text-center max-w-screen-sm mb-10">
-          <h1 className="text-stone-200 font-bold text-2xl">
-            Next.js + Postgres Auth Starter
-          </h1>
-          <p className="text-stone-400 mt-5">
-            This is a{' '}
-            <a
-              href="https://nextjs.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-stone-400 underline hover:text-stone-200 transition-all"
+    <div className=" h-screen bg-black">
+      <div className="flex flex-col items-center m-auto pt-40 gap-4">
+        <div className="flex gap-4">
+          {[1, 2, 3, 4, 5].map((num) => (
+            <button
+              key={num}
+              onClick={() => handleButtonClick(num)}
+              className=" w-40 h-40 border-2 border-stone-400 rounded flex items-center justify-center text-stone-200 hover:bg-stone-800 transition-all"
             >
-              Next.js
-            </a>{' '}
-            starter kit that uses{' '}
-            <a
-              href="https://next-auth.js.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-stone-400 underline hover:text-stone-200 transition-all"
-            >
-              NextAuth.js
-            </a>{' '}
-            for simple email + password login and a{' '}
-            <a
-              href="https://vercel.com/postgres"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-stone-400 underline hover:text-stone-200 transition-all"
-            >
-              Postgres
-            </a>{' '}
-            database to persist the data.
-          </p>
+              {pressed[num - 1] ? order.indexOf(num) + 1 : historicalEvents[num-1].title}
+            </button>
+          ))}
         </div>
-        <div className="flex space-x-3">
-          <Link
-            href="/protected"
-            className="text-stone-400 underline hover:text-stone-200 transition-all"
+
+        <div className="flex gap-4">
+          <button
+            onClick={handleSubmit}
+            className="px-4 py-2 bg-stone-700 text-stone-200 rounded hover:bg-stone-600 transition-all"
           >
-            Protected Page
-          </Link>
-          <p className="text-white">·</p>
-          <a
-            href="https://vercel.com/templates/next.js/prisma-postgres-auth-starter"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-stone-400 underline hover:text-stone-200 transition-all"
+            Submit
+          </button>
+          <button
+            onClick={handleClear}
+            className="px-4 py-2 bg-stone-700 text-stone-200 rounded hover:bg-stone-600 transition-all"
           >
-            Deploy to Vercel
-          </a>
+            Clear
+          </button>
+        </div>
+
+        <div className="text-stone-200">
+          Order: {order.join(', ')}
         </div>
       </div>
     </div>
