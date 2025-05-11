@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  background-color: black;
+}
+
 .container {
     display: flex;
     gap: 20px;

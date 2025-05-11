@@ -87,31 +87,31 @@ const correct = [3,4,1,2,5];
 
   return (
     <div className=" h-screen bg-black">
-      <div className='text-white text-center pt-14 font-bold text-3xl'>Hello<br/> Welcome to a early test of the new History puzzle game <br/> name/cover is still being designed as this is still the proof of concept</div>
-      <div className='text-white text-center pt-5 font-semibold'>Click on the events in history from oldest to most recent</div>
+      <div className='text-white text-center pt-14 font-bold text-3xl md:text-4xl'>Hello<br/> Welcome to a early test of the new History puzzle game <br/> name/cover is still being designed as this is still the proof of concept</div>
+      <div className='text-white text-center pt-5 font-semibold text-lg md:text-xl'>Click on the events in history from oldest to most recent</div>
       <div className="flex flex-col items-center m-auto pt-32 gap-4">
-        <div className="flex gap-4">
+        <div className="flex flex-col md:flex-row gap-4">
           {[1, 2, 3, 4, 5].map((num) => (
             <button
               key={num}
               onClick={() => handleButtonClick(num)}
-              className=" w-40 h-40 border-2 border-stone-400 rounded flex items-center justify-center text-stone-200 hover:bg-stone-800 transition-all"
+              className="min-w-[300px] w-full md:w-1/3 h-40 border-2 border-stone-400 rounded flex items-center justify-center text-stone-200 hover:bg-stone-800 transition-all"
             >
               {pressed[num - 1] ? order.indexOf(num) + 1 : historicalEvents[num-1].title}
             </button>
           ))}
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex flex-col md:flex-row gap-4 w-full">
           <button
             onClick={handleSubmit}
-            className="px-4 py-2 bg-stone-700 text-stone-200 rounded hover:bg-stone-600 transition-all"
+            className="w-full md:w-auto px-4 py-2 bg-stone-700 text-stone-200 rounded hover:bg-stone-600 transition-all"
           >
             Submit
           </button>
           <button
             onClick={handleClear}
-            className="px-4 py-2 bg-stone-700 text-stone-200 rounded hover:bg-stone-600 transition-all"
+            className="w-full md:w-auto px-4 py-2 bg-stone-700 text-stone-200 rounded hover:bg-stone-600 transition-all"
           >
             Clear
           </button>
