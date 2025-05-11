@@ -32,10 +32,13 @@ export default function Page() {
     }
 ];
 
+const correct = [3,4,1,2,5];
+
 
   const [order, setOrder] = useState<number[]>([]);
   const [pressed, setPressed] = useState<boolean[]>(Array(5).fill(false));
   const [numpressed, setnumpressed] = useState<number>(0);
+  let [iscorrect,setiscorrect] = useState<number>(0); //0 is not win or lose //1 is win //-1 is lose
 
   const handleButtonClick = (num: number) => {
     if (!pressed[num - 1]) {
@@ -49,19 +52,43 @@ export default function Page() {
     setnumpressed(numpressed + 1);  
   };
 
-  const handleSubmit = () => {
-    console.log("Submitted order:", order);
-  };
-
   const handleClear = () => {
     setOrder([]);
     setPressed(Array(5).fill(false));
     setnumpressed(0);
+    setiscorrect(0)
   };
+
+  const errorcheck = () => {
+    for(var i = 0; i<5; i++){
+      if(order[i]!=correct[i]){
+        console.log("Stupid")
+        handleClear()
+        setiscorrect(-1)
+        return;
+      }
+    } 
+    setiscorrect(1);
+  }
+
+  const handleSubmit = () => {
+    console.log("Submitted order:", order);
+    if(order.length<5){
+     alert("Missing Choices")
+    }
+    else
+    {//there is 5 spaces having been selected, time to check
+      errorcheck()
+    }
+  };
+
+
+
 
   return (
     <div className=" h-screen bg-black">
-      <div className="flex flex-col items-center m-auto pt-40 gap-4">
+      <div className='text-white text-center pt-14 font-bold text-3xl'>Hello<br/> Welcome to a early test of the new History puzzle game <br/> name/cover is still being designed as this is still the proof of concept</div>
+      <div className="flex flex-col items-center m-auto pt-32 gap-4">
         <div className="flex gap-4">
           {[1, 2, 3, 4, 5].map((num) => (
             <button
@@ -90,8 +117,18 @@ export default function Page() {
         </div>
 
         <div className="text-stone-200">
-          Order: {order.join(', ')}
+          {/* Order: {order.join(', ')} */}
         </div>
+
+          {iscorrect === 0 ? 
+          <div className='text-white text-center'>Once all events are selected, Press Submit to see how you did</div> 
+          : 
+            iscorrect === -1? 
+            <div className='text-red-700 text-center'>Try Again</div> :
+            
+            
+            <div className='text-green-700 text-center'>This is correct!</div>}
+
       </div>
     </div>
   );
