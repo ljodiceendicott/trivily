@@ -87,15 +87,16 @@ const correct = [3,4,1,2,5];
 
   return (
     <div className=" h-screen bg-black">
-      <div className='text-white text-center pt-14 font-bold text-3xl md:text-4xl'>Hello<br/> Welcome to a early test of the new History puzzle game <br/> name/cover is still being designed as this is still the proof of concept</div>
-      <div className='text-white text-center pt-5 font-semibold text-lg md:text-xl'>Click on the events in history from oldest to most recent</div>
+      <div className='text-white text-center pt-14 font-bold text-3xl md:text-4xl'> Welcome to Trivly!</div>
+      <div className='text-gray-300 text-center pt-14 font-semibold text-xl md:text-4xl'>This is only the proof of concept, so the puzzle is not yet dynamic</div>
+      <div className='text-gray-300 text-center pt-5 font-bold text-lg md:text-xl'>Click on the events in history from oldest to most recent</div>
       <div className="flex flex-col items-center m-auto pt-32 gap-4">
         <div className="flex flex-col md:flex-row gap-4">
           {[1, 2, 3, 4, 5].map((num) => (
             <button
               key={num}
               onClick={() => handleButtonClick(num)}
-              className="min-w-[250px] w-full md:w-1/3 h-40 border-2 border-stone-400 rounded flex items-center justify-center text-stone-200 hover:bg-stone-800 transition-all"
+              className="min-w-[250px] w-full md:w-1/3 h-40 border-2 border-gray-600 rounded flex items-center justify-center text-white hover:bg-blue-600 transition-all"
             >
               {pressed[num - 1] ? order.indexOf(num) + 1 : historicalEvents[num-1].title}
             </button>
@@ -105,19 +106,19 @@ const correct = [3,4,1,2,5];
         <div className="flex flex-col md:flex-row gap-4 w-full justify-center">
           <button
             onClick={handleSubmit}
-            className="w-full md:w-auto px-4 py-2 bg-stone-700 text-stone-200 rounded hover:bg-stone-600 transition-all"
+            className="w-full md:w-auto px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-all"
           >
             Submit
           </button>
           <button
             onClick={handleClear}
-            className="w-full md:w-auto px-4 py-2 bg-stone-700 text-stone-200 rounded hover:bg-stone-600 transition-all"
+            className="w-full md:w-auto px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-all"
           >
             Clear
           </button>
         </div>
 
-        <div className="text-stone-200">
+        <div className="text-gray-300">
           {/* Order: {order.join(', ')} */}
         </div>
 
@@ -125,10 +126,10 @@ const correct = [3,4,1,2,5];
           <div className='text-white text-center'>Once all events are selected, Press Submit to see how you did</div> 
           : 
             iscorrect === -1? 
-            <div className='text-red-700 text-center'>Try Again</div> :
+            <div className='text-red-400 text-center'>Try Again</div> :
             
             
-            <div className='text-green-700 text-center'>This is correct!</div>}
+            <div className='text-green-400 text-center'>This is correct!</div>}
 
       </div>
     </div>
