@@ -88,6 +88,7 @@ const correct = [3,4,1,2,5];
   return (
     <div className=" h-screen bg-black">
       <div className='text-white text-center pt-14 font-bold text-3xl'>Hello<br/> Welcome to a early test of the new History puzzle game <br/> name/cover is still being designed as this is still the proof of concept</div>
+      <div className='text-white text-center pt-5 font-semibold'>Click on the events in history from oldest to most recent</div>
       <div className="flex flex-col items-center m-auto pt-32 gap-4">
         <div className="flex gap-4">
           {[1, 2, 3, 4, 5].map((num) => (
