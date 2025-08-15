@@ -1,20 +1,30 @@
-# Next.js + PostgreSQL Auth Starter
+# Trivly - History Puzzle Game
 
-This is a [Next.js](https://nextjs.org/) starter kit that uses [NextAuth.js](https://next-auth.js.org/) for simple email + password login, [Drizzle](https://orm.drizzle.team) as the ORM, and a [Neon Postgres](https://vercel.com/postgres) database to persist the data.
+Trivly is a history puzzle game built with [Next.js](https://nextjs.org/) where players arrange historical events in chronological order. This is currently a proof of concept that demonstrates the core gameplay mechanics.
 
-## Deploy Your Own
+## About the Game
 
-You can clone & deploy it to Vercel with one click:
+In Trivly, players are presented with a set of historical events and must click on them in order from oldest to most recent. The game provides immediate feedback on whether the chronological order is correct, making it an engaging way to learn about historical timelines.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?demo-title=Next.js%20Prisma%20PostgreSQL%20Auth%20Starter&demo-description=Simple%20Next.js%2013%20starter%20kit%20that%20uses%20Next-Auth%20for%20auth%20and%20Prisma%20PostgreSQL%20as%20a%20database.&demo-url=https%3A%2F%2Fnextjs-postgres-auth.vercel.app%2F&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F7rsVQ1ZBSiWe9JGO6FUeZZ%2F210cba91036ca912b2770e0bd5d6cc5d%2Fthumbnail.png&project-name=Next.js%%20Prisma%20PostgreSQL%20Auth%20Starter&repository-name=nextjs-postgres-auth-starter&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnextjs-postgres-auth-starter&from=templates&skippable-integrations=1&env=AUTH_SECRET&envDescription=Generate%20a%20random%20secret%3A&envLink=https://generate-secret.vercel.app/&stores=%5B%7B"type"%3A"postgres"%7D%5D)
+### Current Features
+- Interactive historical event ordering
+- Real-time feedback on player selections
+- Responsive design for mobile and desktop
+- Modern, clean UI with a dark theme
 
-## Developing Locally
+### Gameplay
+1. Players see a set of historical events displayed as clickable buttons
+2. Click on events in chronological order (oldest to newest)
+3. Submit your answer to check if the order is correct
+4. Clear your selections to try again
 
-You can clone & create this repo with the following command
+## Development Status
 
-```bash
-npx create-next-app nextjs-typescript-starter --example "https://github.com/vercel/nextjs-postgres-auth-starter"
-```
+This is currently a **proof of concept** with the following characteristics:
+- Static puzzle content (not yet dynamic)
+- Basic UI implementation
+- Core game mechanics implemented
+- Name and branding still being designed
 
 ## Getting Started
 
@@ -26,11 +36,30 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Technology Stack
+
+- [Next.js](https://nextjs.org/) - React framework
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [NextAuth.js](https://next-auth.js.org/) - Authentication (for future features)
+- [Drizzle](https://orm.drizzle.team) - Database ORM
+- [Neon Postgres](https://vercel.com/postgres) - Database
+
+## Future Development
+
+Planned features for future iterations:
+- Dynamic puzzle generation
+- User authentication and progress tracking
+- Multiple difficulty levels
+- Expanded historical content
+- Leaderboards and achievements
+
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about the technologies used:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs) - utility-first CSS framework.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
