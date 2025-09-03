@@ -61,5 +61,3 @@ To learn more about the technologies used:
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs) - utility-first CSS framework.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
